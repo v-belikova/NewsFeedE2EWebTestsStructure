@@ -17,6 +17,8 @@ public class LoginPage {
     SelenideElement passwordInput = Selenide.$(By.name("passwordReg"));
     SelenideElement avatarInput = Selenide.$(By.name("avatar"));
     SelenideElement buttonSave = Selenide.$x("*//button[contains(text(),'Save')]");
+
+
     //SelenideElement googleAuthButton = $(By.xpath("/html[1]/body[1]/app-root[1]/app-login[1]/div[1]/button[1]/span[1]"));
 }
 

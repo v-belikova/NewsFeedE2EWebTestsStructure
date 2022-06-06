@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 
-public class SetUp {
+abstract class SetUp {
 
     @BeforeAll //метод запускается перед всеми тестовыми методами
     public static void setUpAllure() {
@@ -18,12 +18,11 @@ public class SetUp {
     public void start() {
        Configuration.startMaximized = true; //настройка  окна браузера
        Configuration.timeout = 10000;
-       //Configuration.headless = true;
+       Configuration.headless = false;
     }
 
     @AfterEach  //метод запускается после каждого тестового метода
     public void tearDown() {
-
         WebDriverRunner.closeWebDriver();   //метод настройки браузера закрывается
     }
 }
