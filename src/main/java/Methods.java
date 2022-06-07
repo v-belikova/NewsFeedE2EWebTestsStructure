@@ -29,37 +29,6 @@ public class Methods {
          headerElements.accountCircleButton.shouldBe(Condition.visible).click();
          accountPage.deleteUser.shouldBe(Condition.visible).click();
      }*/
-    public void registrationUser() throws InterruptedException {
-        open(registrationUserPage.homePageURL);
 
-        // registration
-        headerElements.buttonSign.shouldBe(Condition.visible).click();
-        registrationUserPage.regTitle.shouldBe(Condition.visible);
-        registrationUserPage.emailInput.sendKeys(generateRandomHexString(5) + "@gmail.com");
-        String emailText = registrationUserPage.emailInput.getAttribute("value");
-        registrationUserPage.loginInput.sendKeys(generateRandomHexString(5));
-        String loginText = registrationUserPage.loginInput.getAttribute("value");
-        registrationUserPage.passwordInput.sendKeys(generateRandomHexString(6));
-        String passwordText = registrationUserPage.passwordInput.getAttribute("value");
-        String avatar = "src/main/resources/avatar.jpeg";
-        File file = new File(new File(avatar).getAbsolutePath());
-        registrationUserPage.avatarInput.shouldBe(Condition.visible).uploadFile(file);
-        registrationUserPage.buttonSave.shouldBe(Condition.visible).click();
-        headerElements.helloHeader.shouldBe(Condition.visible);
-        Thread.sleep(6000);
-        //assertEquals(("Hello, " + loginText), headerElements.helloHeader.getText());
-
-    }
-
-    public void authorizationUser() throws InterruptedException {
-        open(userAuthorization.homePageURL);
-
-        // authorization
-        userAuthorization.emailInput.setValue("mustyacyvc12@mail.ru");
-        userAuthorization.passwordInput.setValue("0000001");
-        headerElements.buttonLogIn.shouldBe(Condition.visible).click();
-        headerElements.helloHeader.shouldHave(text("Hello,"), text("mustyacyvc12"));
-        Thread.sleep(6000);
-    }
 }
 

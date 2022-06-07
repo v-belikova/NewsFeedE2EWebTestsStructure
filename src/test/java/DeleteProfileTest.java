@@ -5,15 +5,18 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Condition.text;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static com.codeborne.selenide.Selenide.open;
 
-public class InfoUserTest extends SetUp {
+public class DeleteProfileTest extends SetUp {
 
-    private final InfoUser userInfo = new InfoUser();
+    private final UpdateUserProfile updateUserProfile = new UpdateUserProfile();
     private final Methods methods = new Methods();
     private final HeaderElements headerElements = new HeaderElements();
+    private final DeleteProfile deleteProfileTest = new DeleteProfile();
 
 
     @Epic(value = "Login page.")
@@ -24,21 +27,17 @@ public class InfoUserTest extends SetUp {
 
     @Test
     public void infoUserPositiveTest() throws InterruptedException  {
-
-        open(userInfo.homePageURL);
-
+        open(updateUserProfile.homePageURL);
         // info
-        open(userInfo.homePageURL);
-
-        // authorization
         headerElements.emailInput.setValue("mustyacyvc12@mail.ru");
         headerElements.passwordInput.setValue("0000001");
         headerElements.buttonLogIn.shouldBe(Condition.visible).click();
         headerElements.helloHeader.shouldHave(text("Hello,"), text("mustyacyvc12"));
-        Thread.sleep(6000);
-        userInfo.stringMyProfile.shouldBe(Condition.visible).click();;
-        Thread.sleep(6000);
+        updateUserProfile.stringMyProfile.shouldBe(Condition.visible).click();
+        //deleteProfileTest.deleteUser.
 
     }
 }
+
+
 

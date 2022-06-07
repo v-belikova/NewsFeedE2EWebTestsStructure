@@ -7,5 +7,5 @@ import static com.codeborne.selenide.Selenide.$;
 public class InfoUser {
 
     String homePageURL = "https://news-feed-2.dunice-testing.com/";
-    SelenideElement stringMyProfile = Selenide.$(By.cssSelector(".Nav_navigation__item__3eTUx Nav_active__XSt-p"));
+    SelenideElement stringMyProfile = Selenide.$x("*//a[contains(text(),'My profile')]");
 }

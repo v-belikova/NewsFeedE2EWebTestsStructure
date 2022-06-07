@@ -5,13 +5,15 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Condition.text;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static com.codeborne.selenide.Selenide.open;
 
-public class InfoUserTest extends SetUp {
+public class UpdateUserProfileTest extends SetUp {
 
-    private final InfoUser userInfo = new InfoUser();
+    private final UpdateUserProfile updateUserProfile = new UpdateUserProfile();
     private final Methods methods = new Methods();
     private final HeaderElements headerElements = new HeaderElements();
 
@@ -24,21 +26,26 @@ public class InfoUserTest extends SetUp {
 
     @Test
     public void infoUserPositiveTest() throws InterruptedException  {
-
-        open(userInfo.homePageURL);
-
+        open(updateUserProfile.homePageURL);
         // info
-        open(userInfo.homePageURL);
-
-        // authorization
         headerElements.emailInput.setValue("mustyacyvc12@mail.ru");
         headerElements.passwordInput.setValue("0000001");
         headerElements.buttonLogIn.shouldBe(Condition.visible).click();
         headerElements.helloHeader.shouldHave(text("Hello,"), text("mustyacyvc12"));
+        updateUserProfile.stringMyProfile.shouldBe(Condition.visible).click();
+        updateUserProfile.updateUser.shouldBe(Condition.visible).click();
+        updateUserProfile.emailNew.setValue("losk@mail.ru");
+        updateUserProfile.loginNew.setValue("losk");
+        String avatar2 = "src/main/resources/avatar2.jpeg";
+        File file = new File(new File(avatar2).getAbsolutePath());
+        updateUserProfile.avatarInputNew.shouldBe(Condition.visible).uploadFile(file);
+        updateUserProfile.buttonSave.shouldBe(Condition.visible).click();
+        headerElements.helloHeader.shouldHave(text("Hello,"), text("losk"));
+
         Thread.sleep(6000);
-        userInfo.stringMyProfile.shouldBe(Condition.visible).click();;
-        Thread.sleep(6000);
+
 
     }
 }
+
 

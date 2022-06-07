@@ -25,6 +25,12 @@ public class UserAuthorizationTest extends SetUp {
 
     @Test
     public void authorizationPositiveTest() throws InterruptedException {
-        methods.authorizationUser();
+        open(userAuthorization.homePageURL);
+        // authorization
+        userAuthorization.getEmailInput().setValue("mustyacyvc12@mail.ru");
+        userAuthorization.getPasswordInput().setValue("0000001");
+        headerElements.buttonLogIn.shouldBe(Condition.visible).click();
+        headerElements.helloHeader.shouldHave(text("Hello,"), text("mustyacyvc12"));
+        Thread.sleep(6000);
     }
 }
