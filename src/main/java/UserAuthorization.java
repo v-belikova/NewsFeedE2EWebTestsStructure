@@ -7,7 +7,5 @@ public class UserAuthorization {
 
     SelenideElement emailInput = Selenide.$(By.name("email"));
     SelenideElement passwordInput = Selenide.$(By.name("password"));
-    SelenideElement buttonLogIn = Selenide.$x("*//button[contains(text(),'Log In')]");
-
 
 }

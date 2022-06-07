@@ -1,21 +1,17 @@
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static com.codeborne.selenide.Selenide.open;
 
-public class UserInfoTest extends SetUp {
+public class InfoUserTest extends SetUp {
 
-    private final UserInfo  userInfo = new UserInfo();
+    private final InfoUser userInfo = new InfoUser();
     private final Methods methods = new Methods();
     private final HeaderElements headerElements = new HeaderElements();
 
@@ -32,10 +28,7 @@ public class UserInfoTest extends SetUp {
         open(userInfo.homePageURL);
 
         // info
-        userInfo.emailInput.setValue("mustyacyvc12@mail.ru");
-        userInfo.passwordInput.setValue("0000001");
-        userInfo.buttonLogIn.shouldBe(Condition.visible).click();
-        headerElements.helloHeader.shouldHave(text("Hello,"), text ("mustyacyvc12"));
+        methods.authorizationUser();
         userInfo.stringMyProfile.shouldBe(Condition.visible).click();;
         Thread.sleep(6000);
 

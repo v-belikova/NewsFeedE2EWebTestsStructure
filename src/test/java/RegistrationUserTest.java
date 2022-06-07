@@ -8,23 +8,32 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UserAuthorizationTest extends SetUp {
+public class RegistrationUserTest extends SetUp {
 
-    private final UserAuthorization userAuthorization = new UserAuthorization();
+    private final RegistrationUserPage registrationUserPage = new RegistrationUserPage();
     private final Methods methods = new Methods();
     private final HeaderElements headerElements = new HeaderElements();
-
 
     @Epic(value = "Login page.")
     @Feature("Login.")
     @Story("Valid Login.")
     @Description(value = "Check sign in with email and password.")
 
+
     @Test
-    public void authorizationPositiveTest() throws InterruptedException {
-        methods.authorizationUser();
+    public void regressionPositiveTest() throws InterruptedException {
+        //registration
+        methods.registrationUser();
+        // delete user
+        //methods.deleteUser();
     }
 }
+
+
+
+
+
+
